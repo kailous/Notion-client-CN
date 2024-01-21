@@ -46,16 +46,7 @@ patternText=(
     ""
     "======================================"
     "")
-# 输出欢迎信息
-for line in "${patternImg[@]}"; do
-    echo -e "\033[32m$line\033[0m"
-done
-for line in "${patternText[@]}"; do
-    echo -e "$line"
-done
-# 提示按任意键继续
-read -n 1 -s -r -p "按任意键开始汉化，或按 Ctrl + C 退出。"
-echo -e "\n"
+
 
 # 根据当前系统设置文件夹路径，macOS、Windows 10、Windows 11 适用
 folderPath=""
@@ -69,7 +60,16 @@ else
     echo "当前操作系统不支持。"
     exit 1
 fi
-
+# 输出欢迎信息
+for line in "${patternImg[@]}"; do
+    echo -e "\033[32m$line\033[0m"
+done
+for line in "${patternText[@]}"; do
+    echo -e "$line"
+done
+# 提示按任意键继续
+read -n 1 -s -r -p "按任意键开始汉化，或按 Ctrl + C 退出。"
+echo -e "\n"
 # 检查 Notion 缓存文件夹
 if [[ ! -d "$folderPath" ]]; then
     echo "Notion 的缓存文件夹 ------- $notFound"
