@@ -70,7 +70,7 @@ for line in "${patternText[@]}"; do
 done
 # 提示按任意键继续
 read -n 1 -s -r -p "按任意键开始汉化，或按 Ctrl + C 退出。"
-echo ""
+echo -e "\n"
 # 检查 Notion 缓存文件夹
 if [[ ! -d "$folderPath" ]]; then
     echo -e "Notion 的缓存文件夹 ------- $notFound"
