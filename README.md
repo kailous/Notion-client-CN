@@ -31,6 +31,6 @@ curl -sSL https://raw.githubusercontent.com/kailous/Notion-client-CN/main/MacOS.
 ### Windows
 打开 `powershell` 输入以下命令运行。
 ```powershell
-Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/kailous/Notion-client-CN/main/run.sh'))
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/kailous/Notion-client-CN/main/Windows.ps1" -UseBasicParsing).Content
 ```
 我手头没有PC，脚本虽然做了PC的适配，但并没有实际测试过，不确定是否会因为某个命令行工具的差异而导致无法运行的情况。如果你遇到了问题欢迎在该项目的[GitHub Issues](https://github.com/kailous/Notion-client-CN/issues)反馈。
