@@ -70,10 +70,10 @@ for line in "${patternText[@]}"; do
 done
 # 提示按任意键继续
 read -n 1 -s -r -p "按任意键开始汉化，或按 Ctrl + C 退出。"
-echo -e "\n"
+echo ""
 # 检查 Notion 缓存文件夹
 if [[ ! -d "$folderPath" ]]; then
-    echo "Notion 的缓存文件夹 ------- $notFound"
+    echo -e "Notion 的缓存文件夹 ------- $notFound"
     echo -e "$Error"
     exit 1
 else
@@ -84,7 +84,7 @@ fi
 # 检查 latestVersion.json 文件
 latestVersionFile="$folderPath/latestVersion.json"
 if [[ ! -f "$latestVersionFile" ]]; then
-    echo "latestVersion.json  ------- $notFound"
+    echo -e "latestVersion.json  ------- $notFound"
     echo -e "$Error"
     exit 1
 else
@@ -100,7 +100,7 @@ assetsJsonPath="$folderPath/$latestVersion/assets.json"
 
 # 检查 assets.json 文件
 if [[ ! -f "$assetsJsonPath" ]]; then
-    echo "assets.json 文件未找到。"
+    echo -e "assets.json 文件 ---------- $notFound"
     exit 1
 else
     # 显示 assets.json 文件路径
