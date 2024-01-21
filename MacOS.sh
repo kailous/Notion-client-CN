@@ -8,6 +8,7 @@ Backup="$NotionAppFiles/Backup"
 # 汉化脚本仓库所有者和仓库名
 owner="Reamd7"
 repo="notion-zh_CN"
+github_url="https://github.com/$owner/$repo"
 
 # 构建欢迎信息图像
 patternImg=("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
@@ -34,9 +35,11 @@ patternImg=("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
 patternText=(
     "======================================"
     ""
-    "嗨～，欢迎使用 Notion 汉化工具"
-    "汉化包作者 $owner"
-    "汉化包仓库 $repo"
+    "嗨～，欢迎使用 Notion 汉化工具 MacOS v1.0.0"
+    "作者：Rainforest"
+    ""
+    "原汉化包作者 $owner ，仓库 $repo"
+    "仓库地址: $github_url"
     ""
     "======================================"
     "")
@@ -55,8 +58,6 @@ welcome() {
     read -p "按任意键开始汉化，或按 Ctrl + C 退出。"
     echo -e "\n"
 }
-
-
 
 # 绿色字体输出函数
 success() {
@@ -142,6 +143,21 @@ backup() {
     line
 }
 
+# MacOS重启函数
+MacOS_restart() {
+    # 判断 Notion 是否在运行，如果不在运行则启动，如果在运行则重启
+    if [[ $(ps aux | grep -i "Notion.app/Contents/MacOS/Notion" | grep -v grep | wc -l) -eq 0 ]]; then
+        success "Notion 未运行，正在启动..."
+        open -a /Applications/Notion.app
+    else
+        killall Notion
+        # 等待 2 秒
+        success "Notion 已运行，正在重启..."
+        sleep 2
+        open -a /Applications/Notion.app
+    fi
+}
+
 # 下载链接获取函数
 download_url() {
     # 调用GitHub API获取最新的release信息
@@ -203,7 +219,9 @@ download_file() {
         exit 1
     fi
 }
+
 welcome
 backup
 download_url
 download_file
+MacOS_restart
