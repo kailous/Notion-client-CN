@@ -22,7 +22,7 @@ clear
 # 根据当前系统设置文件夹路径，macOS、Windows 10、Windows 11 适用
 folderPath=""
 if [[ "$platform" == "Darwin" ]]; then
-    folderPath="/Users/$username/Library/Application Support/Notion/notionAssetCache-v2"
+    folderPath="～/Library/Application Support/Notion/notionAssetCache-v2"
     platformName="macOS"
 elif [[ "$platform" == "MINGW64_NT"* || "$platform" == "MSYS_NT"* || "$platform" == "CYGWIN_NT"* ]]; then
     folderPath="/c/Users/$username/AppData/Roaming/Notion/notionAssetCache-v2"
@@ -69,7 +69,7 @@ for line in "${patternText[@]}"; do
     echo -e "$line"
 done
 # 提示按任意键继续
-read -n 1 -s -r -p "按任意键开始汉化，或按 Ctrl + C 退出。"
+read -p "按任意键开始汉化，或按 Ctrl + C 退出。"
 echo -e "\n"
 # 检查 Notion 缓存文件夹
 if [[ ! -d "$folderPath" ]]; then
