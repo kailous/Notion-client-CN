@@ -17,6 +17,20 @@ Fail="\033[31m汉化失败！出现了未知错误。\033[0m"
 
 # 清除控制台
 clear
+
+
+# 根据当前系统设置文件夹路径，macOS、Windows 10、Windows 11 适用
+folderPath=""
+if [[ "$platform" == "Darwin" ]]; then
+    folderPath="/Users/$username/Library/Application Support/Notion/notionAssetCache-v2"
+    platformName="macOS"
+elif [[ "$platform" == "MINGW64_NT"* || "$platform" == "MSYS_NT"* || "$platform" == "CYGWIN_NT"* ]]; then
+    folderPath="/c/Users/$username/AppData/Roaming/Notion/notionAssetCache-v2"
+    platformName="Windows"
+else
+    echo "当前操作系统不支持。"
+    exit 1
+fi
 # 设置输出欢迎信息的数组
 patternImg=("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
     "nnnn                         nnnn"
@@ -47,19 +61,6 @@ patternText=(
     "======================================"
     "")
 
-
-# 根据当前系统设置文件夹路径，macOS、Windows 10、Windows 11 适用
-folderPath=""
-if [[ "$platform" == "Darwin" ]]; then
-    folderPath="/Users/$username/Library/Application Support/Notion/notionAssetCache-v2"
-    platformName="macOS"
-elif [[ "$platform" == "MINGW64_NT"* || "$platform" == "MSYS_NT"* || "$platform" == "CYGWIN_NT"* ]]; then
-    folderPath="/c/Users/$username/AppData/Roaming/Notion/notionAssetCache-v2"
-    platformName="Windows"
-else
-    echo "当前操作系统不支持。"
-    exit 1
-fi
 # 输出欢迎信息
 for line in "${patternImg[@]}"; do
     echo -e "\033[32m$line\033[0m"
