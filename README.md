@@ -24,6 +24,10 @@ Notion 客户端汉化脚本。
 ```shell
 curl -sSL https://raw.githubusercontent.com/kailous/Notion-client-CN/main/run.sh | bash
 ```
+如果不生效，可以尝试下这个
+```shell
+curl -sSL https://raw.githubusercontent.com/kailous/Notion-client-CN/main/MacOS.sh | bash
+```
 ### Windows
 打开 `powershell` 输入以下命令运行。
 ```powershell
